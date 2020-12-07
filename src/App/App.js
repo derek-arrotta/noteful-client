@@ -1,15 +1,18 @@
-import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import NoteListNav from '../NoteListNav/NoteListNav';
-import NotePageNav from '../NotePageNav/NotePageNav';
-import NoteListMain from '../NoteListMain/NoteListMain';
-import NotePageMain from '../NotePageMain/NotePageMain';
-import dummyStore from '../dummy-store';
-import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
-import './App.css';
+//define imports
+import React, {Component} from 'react'; // define react component "App"
+import {Route, Link} from 'react-router-dom'; // use route and link
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'; // import icons
+import NoteListNav from '../NoteListNav/NoteListNav'; // components/functions
+import NotePageNav from '../NotePageNav/NotePageNav'; // ''
+import NoteListMain from '../NoteListMain/NoteListMain'; // ''
+import NotePageMain from '../NotePageMain/NotePageMain'; // ''
+import dummyStore from '../dummy-store'; // folders and notes source
+import {getNotesForFolder, findNote, findFolder} from '../notes-helpers'; // ''
+import './App.css'; // styling
+
 
 class App extends Component {
+    // define states (notes and folders (updated from dummyStore))
     state = {
         notes: [],
         folders: []
@@ -20,10 +23,12 @@ class App extends Component {
         setTimeout(() => this.setState(dummyStore), 600);
     }
 
+// "..." spread attribute spreads out folders from notes in dummy-store. same as saying folders={dummy-store.folders} & notes={dummy-store.notes}
     renderNavRoutes() {
+        // define states to use
         const {notes, folders} = this.state;
         return (
-            <>
+            <>  
                 {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
@@ -33,7 +38,7 @@ class App extends Component {
                             <NoteListNav
                                 folders={folders}
                                 notes={notes}
-                                {...routeProps}
+                                {...routeProps} 
                             />
                         )}
                     />
