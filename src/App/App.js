@@ -9,6 +9,9 @@ import NotePageMain from "../NotePageMain/NotePageMain"; // ''
 import dummyStore from "../dummy-store"; // folders and notes source
 import { getNotesForFolder, findNote, findFolder } from "../notes-helpers"; // ''
 import "./App.css"; // styling
+// ----- added import ----------
+import ApiContext from "../ApiContext";
+import config from "../config";
 
 class App extends Component {
   // define states (notes and folders (updated from dummyStore))
@@ -18,9 +21,30 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // fake date loading from API call
-    setTimeout(() => this.setState(dummyStore), 600);
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/notes`),
+      fetch(`${config.API_ENDPOINT}/folders`),
+    ])
+      .then(([notesRes, foldersRes]) => {
+        if (!notesRes.ok) return notesRes.json().then((e) => Promise.reject(e));
+        if (!foldersRes.ok)
+          return foldersRes.json().then((e) => Promise.reject(e));
+
+        return Promise.all([notesRes.json(), foldersRes.json()]);
+      })
+      .then(([notes, folders]) => {
+        this.setState({ notes, folders });
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
   }
+
+  handleDeleteNote = (noteId) => {
+    this.setState({
+      notes: this.state.notes.filter((note) => note.id !== noteId),
+    });
+  };
 
   // "..." spread attribute
   renderNavRoutes() {
