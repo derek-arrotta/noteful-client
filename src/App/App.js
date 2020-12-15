@@ -89,6 +89,8 @@ class App extends Component {
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
+      addFolder: this.handleAddFolder,
+      addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote,
     };
     return (
