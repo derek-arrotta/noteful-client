@@ -9,9 +9,13 @@ import React, { Component } from "react";
 // add button to note list page to invoke new form.
 
 export default class AddNote extends Component {
-  
-  
-  
+  static defaultProps = {
+    history: {
+      push: () => {},
+    },
+  };
+  static contextType = ApiContext;
+
   render() {
     const { folders = [] } = this.context;
     return (
@@ -44,5 +48,4 @@ export default class AddNote extends Component {
       </section>
     );
   }
-
 }
