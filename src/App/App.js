@@ -89,6 +89,7 @@ class App extends Component {
   }
 
   render() {
+    //throw "error";
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
