@@ -6,12 +6,15 @@ import NoteListNav from "../NoteListNav/NoteListNav"; // components/functions
 import NotePageNav from "../NotePageNav/NotePageNav"; // ''
 import NoteListMain from "../NoteListMain/NoteListMain"; // ''
 import NotePageMain from "../NotePageMain/NotePageMain"; // ''
-import dummyStore from "../dummy-store"; // folders and notes source
-import { getNotesForFolder, findNote, findFolder } from "../notes-helpers"; // ''
+//import dummyStore from "../dummy-store"; // folders and notes source
+//import { getNotesForFolder, findNote, findFolder } from "../notes-helpers"; // ''
 import "./App.css"; // styling
 // ----- added import ----------
 import ApiContext from "../ApiContext";
 import config from "../config";
+import AddFolder from '../AddFolder/AddFolder'
+import AddNote from '../AddNote/AddNote'
+
 
 class App extends Component {
   // define states (notes and folders (updated from dummyStore))
