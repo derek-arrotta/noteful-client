@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import NotefulForm from '../NotefulForm/NotefulForm'
+import ApiContext from '../ApiContext'
+import config from '../config'
+import './AddNote.css'
 
 //add note
 // implements a form to capture the name, content, and folder for a new note
