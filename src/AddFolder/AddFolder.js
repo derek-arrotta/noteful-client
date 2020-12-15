@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import NotefulForm from "../NotefulForm/NotefulForm";
+import ApiContext from '../ApiContext'
+import config from '../config'
+import './AddFolder.css'
 
 //add folder
 // capture name of new folder to POST /folders endpoint server (ensure any errors are handled)
