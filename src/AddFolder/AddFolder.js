@@ -3,6 +3,7 @@ import NotefulForm from "../NotefulForm/NotefulForm";
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddFolder.css'
+import PropTypes from 'prop-types';
 
 
 export default class AddFolder extends Component {
@@ -15,6 +16,7 @@ export default class AddFolder extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { push } = this.props.history;
     const folder = {
       name: e.target["folder-name"].value,
     };
@@ -31,7 +33,8 @@ export default class AddFolder extends Component {
       })
       .then((folder) => {
         this.context.addFolder(folder);
-        this.props.history.push(`/folder/${folder.id}`);
+        push(`/folder/${folder.id}`);
+        //this.props.history.push(`/folder/${folder.id}`);
       })
       .catch((error) => {
         console.error({ error });
@@ -55,3 +58,7 @@ export default class AddFolder extends Component {
     );
   }
 }
+
+AddFolder.propTypes = {
+  push: PropTypes.func,
+};
