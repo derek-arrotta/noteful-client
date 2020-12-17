@@ -12,8 +12,8 @@ import "./App.css"; // styling
 // ----- added import ----------
 import ApiContext from "../ApiContext";
 import config from "../config";
-import AddFolder from '../AddFolder/AddFolder'
-import AddNote from '../AddNote/AddNote'
+import AddFolder from '../AddFolder/AddFolder';
+import AddNote from '../AddNote/AddNote';
 
 
 class App extends Component {
@@ -107,6 +107,7 @@ class App extends Component {
               <FontAwesomeIcon icon="check-double" />
             </h1>
           </header>
+          
           <main className="App__main">{this.renderMainRoutes()}</main>
         </div>
       </ApiContext.Provider>
