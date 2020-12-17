@@ -4,6 +4,7 @@ import CircleButton from "../CircleButton/CircleButton";
 import ApiContext from "../ApiContext";
 import { findNote, findFolder } from "../notes-helpers";
 import "./NotePageNav.css";
+import PropTypes from 'prop-types';
 
 export default class NotePageNav extends React.Component {
   static defaultProps = {
@@ -19,6 +20,7 @@ export default class NotePageNav extends React.Component {
   render() {
     const { notes, folders } = this.context;
     const { noteId } = this.props.match.params;
+    const { goBack } = this.props.history;
     const note = findNote(notes, noteId) || {};
     const folder = findFolder(folders, note.folderId);
     return (
@@ -26,7 +28,8 @@ export default class NotePageNav extends React.Component {
         <CircleButton
           tag="button"
           role="link"
-          onClick={() => this.props.history.goBack()}
+          //onClick={() => this.props.history.goBack()}
+          onClick={() => goBack()}
           className="NotePageNav__back-button"
         >
           <FontAwesomeIcon icon="chevron-left" />
@@ -38,3 +41,10 @@ export default class NotePageNav extends React.Component {
     );
   }
 }
+
+NotePageNav.propTypes = {
+  notes: PropTypes.array,
+  folders: PropTypes.array,
+  noteId: PropTypes.string,
+  goBack: PropTypes.func,
+};
