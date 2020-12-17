@@ -14,10 +14,11 @@ import ApiContext from "../ApiContext";
 import config from "../config";
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
+import PropTypes from 'prop-types';
 
 
-class App extends Component {
-  // define states (notes and folders (updated from dummyStore))
+export default class App extends Component {
+  
   state = {
     notes: [],
     folders: [],
@@ -107,7 +108,6 @@ class App extends Component {
               <FontAwesomeIcon icon="check-double" />
             </h1>
           </header>
-          
           <main className="App__main">{this.renderMainRoutes()}</main>
         </div>
       </ApiContext.Provider>
@@ -115,4 +115,7 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  notes: PropTypes.array,
+  folders: PropTypes.array,
+};

@@ -11,12 +11,14 @@ export default class AddFolder extends Component {
     history: {
       push: () => {},
     },
+    folder: '',
   };
   static contextType = ApiContext;
 
   handleSubmit = (e) => {
     e.preventDefault();
     const { push } = this.props.history;
+    const { addFolder } = this.context;
     const folder = {
       name: e.target["folder-name"].value,
     };
@@ -32,7 +34,8 @@ export default class AddFolder extends Component {
         return res.json();
       })
       .then((folder) => {
-        this.context.addFolder(folder);
+        addFolder(folder);
+        //this.context.addFolder(folder);
         push(`/folder/${folder.id}`);
         //this.props.history.push(`/folder/${folder.id}`);
       })
@@ -61,4 +64,6 @@ export default class AddFolder extends Component {
 
 AddFolder.propTypes = {
   push: PropTypes.func,
+  addFolder: PropTypes.func,
+  folder: PropTypes.string.isRequired,
 };
