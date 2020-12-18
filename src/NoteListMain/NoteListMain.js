@@ -41,7 +41,7 @@ export default class NoteListMain extends React.Component {
             </li>
           ))}
         </ul>
-      
+          {/* button used to be here */}
       </section>
     );
   }
