@@ -20,7 +20,10 @@ CircleButton.defaultProps ={
 }
 
 CircleButton.propTypes = {
-  tag: PropTypes.func,
+  tag: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]),
   className: PropTypes.string,
   children: PropTypes.array,
   otherProps: PropTypes.array,

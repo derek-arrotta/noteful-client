@@ -10,6 +10,11 @@ export default class AddNote extends Component {
     history: {
       push: () => {},
     },
+    name: '',
+    content: 0,
+    folderId: '',
+    modified: '',
+    newNote: {},
   };
   static contextType = ApiContext;
 
@@ -17,11 +22,15 @@ export default class AddNote extends Component {
     e.preventDefault();
     const { push } = this.props.history;
     const { addNote } = this.context;
+    const name = e.target["note-name"].value;
+    const content = e.target["note-content"].value;
+    const folderId = e.target["note-folder-id"].value;
+    const modified = new Date();
     const newNote = {
-      name: e.target["note-name"].value,
-      content: e.target["note-content"].value,
-      folderId: e.target["note-folder-id"].value,
-      modified: new Date(),
+      name,
+      content,
+      folderId,
+      modified,
     };
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
@@ -57,7 +66,7 @@ export default class AddNote extends Component {
           </div>
           <div className="field">
             <label htmlFor="note-content-input">Content</label>
-            <textarea id="note-content-input" name="note-content" required/>
+            <textarea id="note-content-input" name="note-content" />
           </div>
           <div className="field">
             <label htmlFor="note-folder-select">Folder</label>
@@ -84,4 +93,6 @@ AddNote.propTypes = {
   push: PropTypes.func,
   addNote: PropTypes.func,
   folders: PropTypes.array,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }),
+  content: PropTypes.string.isRequired,
 };

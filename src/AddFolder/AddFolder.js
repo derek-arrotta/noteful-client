@@ -66,4 +66,5 @@ AddFolder.propTypes = {
   push: PropTypes.func,
   addFolder: PropTypes.func,
   folder: PropTypes.string.isRequired,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }),
 };

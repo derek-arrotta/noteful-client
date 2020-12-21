@@ -43,4 +43,5 @@ NotePageMain.propTypes = {
   notes: PropTypes.array,
   noteId: PropTypes.string,
   id: PropTypes.number,
+  match: PropTypes.shape({ params: PropTypes.object }),
 };
