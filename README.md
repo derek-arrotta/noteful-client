@@ -4,7 +4,7 @@ Store notes in folders via a web browser on your phone or computer.
 
 ## Technology
 
-React, Javascript, HTML, CSS, API (post/fetch)
+React (router & context, prop type validation), Javascript, HTML, CSS, API (post/fetch)
 
 ## Screenshots
 
