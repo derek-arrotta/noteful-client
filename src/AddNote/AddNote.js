@@ -11,7 +11,7 @@ export default class AddNote extends Component {
       push: () => {},
     },
     name: '',
-    content: 0,
+    content: '',
     folderId: '',
     modified: '',
     newNote: {},
@@ -94,5 +94,9 @@ AddNote.propTypes = {
   addNote: PropTypes.func,
   folders: PropTypes.array,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
+  name: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  folderId: PropTypes.string.isRequired,
+  modified: PropTypes.string.isRequired,
+  newNote: PropTypes.object.isRequired,
 };
