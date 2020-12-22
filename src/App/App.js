@@ -24,6 +24,15 @@ export default class App extends Component {
     folders: [],
   };
 
+  static defaultProps = {
+    notes: [],
+    folders: [],
+    folder: '',
+    note: '',
+    noteId: '',
+    component: {},
+  };
+
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/notes`),
@@ -116,6 +125,18 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  notes: PropTypes.array,
-  folders: PropTypes.array,
+  notes: PropTypes.array.isRequired,
+  folders: PropTypes.array.isRequired,
+  folder: PropTypes.string.isRequired,
+  note: PropTypes.string.isRequired,
+  noteId: PropTypes.string.isRequired,
+  addFolder: PropTypes.func,
+  addNote: PropTypes.func,
+  deleteNote: PropTypes.func,
+  path: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.object.isRequired,
+  ]),
+  key: PropTypes.object,
+  component: PropTypes.object.isRequired,
 };

@@ -13,6 +13,16 @@ export default class NoteListMain extends React.Component {
     match: {
       params: {},
     },
+    folderId: '',
+    notes: [],
+    tag: {},
+    to: '',
+    type: '',
+    className: '',
+    id: {},
+    name: {},
+    modified: {},
+    icon: '',
   };
   static contextType = ApiContext;
 
@@ -48,6 +58,16 @@ export default class NoteListMain extends React.Component {
 }
 
 NoteListMain.propTypes = {
-  folderId: PropTypes.string,
-  notes: PropTypes.array,
+  match: PropTypes.shape({ params: PropTypes.object.isRequired }),
+  folderId: PropTypes.string.isRequired,
+  notes: PropTypes.array.isRequired,
+  tag: PropTypes.object.isRequired,
+  to: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  id: PropTypes.object.isRequired,
+  name: PropTypes.object.isRequired,
+  modified: PropTypes.object.isRequired,
+  icon: PropTypes.string.isRequired,
+
 };

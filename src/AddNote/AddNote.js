@@ -10,6 +10,8 @@ export default class AddNote extends Component {
     history: {
       push: () => {},
     },
+    addNote: () => {}, 
+    folders: [],
     name: '',
     content: '',
     folderId: '',
@@ -91,8 +93,8 @@ export default class AddNote extends Component {
 
 AddNote.propTypes = {
   push: PropTypes.func,
-  addNote: PropTypes.func,
-  folders: PropTypes.array,
+  addNote: PropTypes.func.isRequired,
+  folders: PropTypes.array.isRequired,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
   name: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,

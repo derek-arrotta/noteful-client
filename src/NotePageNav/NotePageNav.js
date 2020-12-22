@@ -43,8 +43,15 @@ export default class NotePageNav extends React.Component {
 }
 
 NotePageNav.propTypes = {
-  notes: PropTypes.array,
-  folders: PropTypes.array,
-  noteId: PropTypes.string,
-  goBack: PropTypes.func,
+  notes: PropTypes.array.isRequired,
+  folders: PropTypes.array.isRequired,
+  noteId: PropTypes.string.isRequired,
+  goBack: PropTypes.func.isRequired,
+  history: PropTypes.shape({goBack: PropTypes.func.isRequired}),
+  match: PropTypes.shape({ params: PropTypes.object.isRequired }),
+  tag: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
 };

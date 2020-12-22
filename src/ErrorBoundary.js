@@ -10,6 +10,10 @@ export default class ErrorBoundary extends Component {
     };
   }
 
+  static defaultProps = {
+    hasError: false,
+  };
+
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
@@ -26,5 +30,5 @@ export default class ErrorBoundary extends Component {
 }
 
 ErrorBoundary.propTypes = {
-  hasError: PropTypes.bool,
+  hasError: PropTypes.bool.isRequired,
 };

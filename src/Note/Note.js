@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 export default class Note extends React.Component {
   static defaultProps = {
     onDeleteNote: () => {},
+    noteId: '',
   };
   static contextType = ApiContext;
 
@@ -64,7 +65,8 @@ export default class Note extends React.Component {
 
 Note.propTypes = {
     onDeleteNote: PropTypes.func,
+    noteId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    modified: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    modified: PropTypes.string.isRequired,
   };

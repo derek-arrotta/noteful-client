@@ -8,6 +8,17 @@ import "./NoteListNav.css";
 import PropTypes from 'prop-types';
 
 export default class NoteListNav extends React.Component {
+  static defaultProps = {
+    folders: [],
+    notes: [],
+    folder: '',
+    key: {},
+    className: '',
+    to: '',
+    tag: {},
+    type: '',
+    icon: '',
+  };
   static contextType = ApiContext;
 
   render() {
@@ -47,6 +58,13 @@ export default class NoteListNav extends React.Component {
 }
 
 NoteListNav.propTypes = {
-  folders: PropTypes.array,
-  notes: PropTypes.array,
+  folders: PropTypes.array.isRequired,
+  notes: PropTypes.array.isRequired,
+  folder: PropTypes.string.isRequired,
+  key: PropTypes.object.isRequired,
+  className: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  tag: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
 };
